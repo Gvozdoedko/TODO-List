@@ -11,7 +11,7 @@ function main() {
     button.onclick = function () {
         const liEl = document.createElement("li");
         const checkBox = document.createElement("input");
-        checkBox.setAttribute("type", "checkBox");
+        checkBox.setAttribute("type", "checkbox");
         const textInLi = document.createElement("span");
         const allItem = document.getElementsByTagName("li");
 
@@ -44,18 +44,21 @@ function main() {
             };
         });
 
-        btnRemoveAll.onclick = function () {
+        btnRemoveAll.addEventListener("click", () => {
             Array.from(allItem).forEach((el) => {
                 el.remove();
             });
-        };
+        });
 
-        btnSelectAll.onclick = function () {
-            const checkboxes = document.querySelectorAll("input[type=checkbox]");
+        btnSelectAll.addEventListener("click", () => {
+            const checkboxes = document.querySelectorAll(
+                "input[type=checkbox]"
+            );
             Array.from(checkboxes).forEach((el) => {
                 el.checked = true;
             });
-        };
+            console.log(Array.from(checkboxes));
+        });
     };
 }
 
