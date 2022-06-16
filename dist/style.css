@@ -33,3 +33,11 @@
 #list p {
   font-size: 32px;
 }
+
+li {
+  list-style: none;
+}
+
+.strike {
+  text-decoration: line-through;
+}
