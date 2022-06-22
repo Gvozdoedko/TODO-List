@@ -10,16 +10,24 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div>
-        <input id="input_text" type="text" placeholder="Ваше имя">
-        <button id="button">Тык</button>
-        <button id="removeAll">Очистить список</button>
-        <button id="selectAll">Выбрать всё</button>
+<body id="body">
+    <div class="login-page" id="divLogin">
+            <input type="email" placeholder="email" id="inputLogin">
+            <input type="password" placeholder="password" id="inputPassword">
+            <button id="loginBtn">login</button>
     </div>
-    <div id="list">
-        <p>Список имен</p>
+    <div class="wrapper" id="mainDiv">
+        <div>
+            <input id="input_text" type="text" placeholder="Ваше имя">
+            <button id="button">Тык</button>
+            <button id="removeAll">Очистить список</button>
+            <button id="selectAll">Выбрать всё</button>
+        </div>
+        <div id="list">
+            <p>List to do</p>
+        </div>
     </div>
+    
 
 
 </body>
