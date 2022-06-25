@@ -80,63 +80,64 @@ function main() {
 
     //list function
 
-    mainDiv.onclick = function (event) {
+    button.onclick = function () {
         const liEl = document.createElement("li");
         const checkBox = document.createElement("input");
         checkBox.setAttribute("type", "checkbox");
-        checkBox.setAttribute("id", "checkbox");
         const textInLi = document.createElement("span");
         const allItem = document.getElementsByTagName("li");
+
         let textFromUser = input.value;
-
-        let target = event.target.id;
-        console.log(target);
-
-        if (target == "button") {
-            if (input.value == "") {
-                alert(`Заполните поле 'Ваше имя'`);
-                return false;
-            } else {
-                console.log(textFromUser);
-                textInLi.innerText = textFromUser;
-                input.value = "";
-                liEl.append(checkBox);
-                liEl.append(textInLi);
-                ulEl.append(liEl);
-                divEl.append(ulEl);
-            }
+        if (input.value == "") {
+            alert(`Заполните поле 'Ваше имя'`);
+            return false;
+        } else {
+            console.log(textFromUser);
+            textInLi.innerText = textFromUser;
+            input.value = "";
+            liEl.append(checkBox);
+            liEl.append(textInLi);
+            ulEl.append(liEl);
+            divEl.append(ulEl);
         }
 
-        if (target == "checkbox") {
-            if (event.target.checked) {
-                textInLi.classList.add("strike");
-                divEl.append(deleteChecked);
-            } else {
-                textInLi.classList.remove("strike");
-                deleteChecked.remove();
-            }
-        }
-        if (target == "deleteChecked") {
-            textInLi.remove();
-            checkBox.remove();
-            deleteChecked.remove();
+        ulEl.onclick = (e) => {
+            let target = e.target;
+            if (target.nodeName = "INPUT") {
+                if (target.checked) {
+                    console.log(`input`);
+                    textInLi.classList.add("strike");
+                    ulEl.append(deleteChecked);
+                    return;
+                } else {
+                    textInLi.classList.remove("strike");
+                    deleteChecked.remove();
+                };
+            };
+            // if (target.nodeName = "BUTTON") {
+            //     // liEl.remove();
+            //     // textInLi.remove();
+            //     // checkBox.remove();
+            //     deleteChecked.remove();
+            // }
+        };
 
-            console.log(`can't delete`);
-        }
-
-        if (target == "removeAll") {
+        btnRemoveAll.addEventListener("click", () => {
             Array.from(allItem).forEach((el) => {
                 el.remove();
             });
-        }
-        if (target == "selectAll") {
+            deleteChecked.remove();
+        });
+
+        btnSelectAll.addEventListener("click", () => {
             const checkboxes = document.querySelectorAll(
                 "input[type=checkbox]"
             );
             Array.from(checkboxes).forEach((el) => {
                 el.checked = true;
             });
-        }
+            console.log(Array.from(checkboxes));
+        });
     };
 }
 
